@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BackupService", "Backup\BackupService.vbproj", "{44767A58-8BC7-4423-BCC8-756DEE362BF2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5414168-416B-4471-89F8-948FA5CC0CEA} = {A5414168-416B-4471-89F8-948FA5CC0CEA}
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BackupSetup", "SetupBackup\SetupBackup.vdproj", "{C7B18EB9-5AF1-45F7-975B-2F22BEE73C9D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BackupView", "BackupView\BackupView.vbproj", "{D1EC0E0E-C464-4594-8A47-36FD40F9D988}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5414168-416B-4471-89F8-948FA5CC0CEA} = {A5414168-416B-4471-89F8-948FA5CC0CEA}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BackupCore", "BackupCore\BackupCore.vbproj", "{A5414168-416B-4471-89F8-948FA5CC0CEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44767A58-8BC7-4423-BCC8-756DEE362BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44767A58-8BC7-4423-BCC8-756DEE362BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44767A58-8BC7-4423-BCC8-756DEE362BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44767A58-8BC7-4423-BCC8-756DEE362BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B18EB9-5AF1-45F7-975B-2F22BEE73C9D}.Debug|Any CPU.ActiveCfg = Debug
+		{C7B18EB9-5AF1-45F7-975B-2F22BEE73C9D}.Release|Any CPU.ActiveCfg = Release
+		{D1EC0E0E-C464-4594-8A47-36FD40F9D988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC0E0E-C464-4594-8A47-36FD40F9D988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC0E0E-C464-4594-8A47-36FD40F9D988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC0E0E-C464-4594-8A47-36FD40F9D988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5414168-416B-4471-89F8-948FA5CC0CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5414168-416B-4471-89F8-948FA5CC0CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5414168-416B-4471-89F8-948FA5CC0CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5414168-416B-4471-89F8-948FA5CC0CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
