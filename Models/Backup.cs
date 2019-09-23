@@ -1,14 +1,16 @@
 ﻿using System;
-using System.IO;
+using Delimon.Win32.IO;
 
 namespace Walfrido.Backup.Models
 {
     class Backup
     {
+        private String subFolders;
         public String Source { get; set; }
         public String Destination { get; set; }
-        private String subFolders;
         public string CurrentDestination { get; set; }
+        public Boolean IsSucess { get; set; }
+        public int CountFiles { get; set; }
 
         public Backup(String source, String destination)
         {
@@ -18,31 +20,41 @@ namespace Walfrido.Backup.Models
 
         public void RunBackup()
         {
-            Run(new DirectoryInfo(this.Source));
+            if (!Directory.Exists(this.Source))
+            {
+                throw new System.IO.DirectoryNotFoundException(String.Format("Pasta de origem {0} não foi localizada.", this.Source));
+            }
+            DirectoryInfo directoryInfo = new DirectoryInfo(this.Source);
+            Run(directoryInfo);
         }
 
         private void Run(DirectoryInfo directoryInfo)
         {
-            foreach (FileInfo fileInfo in directoryInfo.GetFiles())
+            foreach (Delimon.Win32.IO.FileInfo fileInfo in directoryInfo.GetFiles())
             {
-                System.Threading.Thread.Sleep(1000);
+                
+                System.Threading.Thread.Sleep(10);
                 this.CurrentDestination = this.Destination + this.subFolders + "\\" + fileInfo.Name;
-                File.Copy(fileInfo.FullName, this.CurrentDestination,true);
+                try
+                {
+                    Delimon.Win32.IO.File.Copy(fileInfo.FullName, this.CurrentDestination, true);
+                    CountFiles++;
+                }
+                catch (Exception)
+                {
+                    //System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                
             }
             foreach (DirectoryInfo directory in directoryInfo.GetDirectories())
             {
-                System.Threading.Thread.Sleep(50);
-                if (directory.Parent.Name.Equals(new DirectoryInfo(this.Source).Name))
-                {
-                    this.subFolders = String.Empty;
-                }
-                else
-                {
-                    this.subFolders += directory.Name + "\\";
-                }
+                System.Threading.Thread.Sleep(10);
+                if (directory.Parent.Name.Equals(new DirectoryInfo(this.Source).Name)) this.subFolders = String.Empty;
+                else this.subFolders += directory.Name + "\\";
                 this.subFolders = GetDestination(directory.FullName);
                 this.CurrentDestination = this.Destination + this.subFolders;
-                if (!Directory.Exists(this.CurrentDestination)) Directory.CreateDirectory(this.CurrentDestination);
+                if (!Directory.Exists(this.CurrentDestination)) Models.IO.LongDirectory.CreateDirectory(this.CurrentDestination);
+                CountFiles++;
                 Run(directory);
             }
         }
